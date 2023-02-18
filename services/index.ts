@@ -20,16 +20,20 @@ export const isTokenValid = async (username: string, password: string) => {
 export const getReply = async (question: string) => {
   const username = localStorage.getItem(usernameName);
   const password = localStorage.getItem(authTokenName);
-  const data = await fetch("http://43.156.126.210:8081/wak", {
+  const resp = await fetch("http://43.156.126.210:8081/wak", {
     method: "POST",
     body: JSON.stringify({
-      name: username,
-      cert: password,
+      user: { name: username, cert: password },
+      content: question,
     }),
     headers: {
       "Content-Type": "application/json",
     },
-  }).then((r) => r.json());
+  });
+  if (resp.status !== 200) {
+    return location.reload();
+  }
+  const data = await resp.json();
   console.log("data", data);
   return data.message;
 };

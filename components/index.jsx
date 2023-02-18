@@ -7,6 +7,7 @@ import Input from "./Input";
 import Header from "./Header";
 
 import Swal from "sweetalert2";
+import { getReply } from "@/services";
 
 const API = {
   GetChatbotResponse: async (message) => {
@@ -26,10 +27,7 @@ export function Chatbot() {
   useEffect(() => {
     async function loadWelcomeMessage() {
       setMessages([
-        <BotMessage
-          key="0"
-          fetchMessage={async () => await API.GetChatbotResponse("hi")}
-        />,
+        <BotMessage key="0" fetchMessage={async () => "欢迎使用！"} />,
       ]);
     }
     loadWelcomeMessage();
@@ -46,7 +44,7 @@ export function Chatbot() {
         key={messages.length + 2}
         fetchMessage={async () => {
           isPending.current = true;
-          const msg = await API.GetChatbotResponse(text);
+          const msg = await getReply(text);
           isPending.current = false;
           return msg;
         }}
