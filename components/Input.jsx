@@ -3,14 +3,16 @@ import React, { useState } from "react";
 export default function Input({ onSend }) {
   const [text, setText] = useState("");
 
-  const handleInputChange = e => {
+  const handleInputChange = (e) => {
     setText(e.target.value);
   };
 
-  const handleSend = e => {
+  const handleSend = (e) => {
     e.preventDefault();
-    onSend(text);
-    setText("");
+    const sendSuccess = onSend(text);
+    if (sendSuccess !== false) {
+      setText("");
+    }
   };
 
   return (
