@@ -1,4 +1,4 @@
-import { useContext } from "../pages/context";
+import { useContext } from "./context";
 import { Chatbot } from ".";
 import { Login } from "./login";
 import { Loading } from "./loading";

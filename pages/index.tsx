@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
 import { Main } from "@/components/main";
-import { Provider } from "./context";
+import { Provider } from "../components/context";
 
 export default function Home() {
   return (
