@@ -15,3 +15,6 @@
   cursor: pointer;
   width: 100%;
 }
+.errorMsg {
+  color: red;
+}

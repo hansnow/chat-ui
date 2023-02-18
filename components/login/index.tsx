@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useContext } from "../context";
 import styles from "./styles.module.css";
 
 type LoginProps = {
@@ -6,6 +7,7 @@ type LoginProps = {
 };
 
 export const Login = React.memo<LoginProps>(function Login(props) {
+  const { loginMsg } = useContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,12 +37,12 @@ export const Login = React.memo<LoginProps>(function Login(props) {
         />
 
         <label htmlFor="psw">
-          <b>订单号</b>
+          <b>登录凭证</b>
         </label>
         <input
           className={styles.input}
           // type="password"
-          placeholder="请输入订单号"
+          placeholder="请输入登录凭证"
           name="psw"
           required
           value={password}
@@ -50,6 +52,7 @@ export const Login = React.memo<LoginProps>(function Login(props) {
         <button className={styles.loginBtn} type="submit">
           登录
         </button>
+        <div className={styles.errorMsg}>{loginMsg}</div>
       </div>
     </form>
   );

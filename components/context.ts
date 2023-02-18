@@ -30,7 +30,7 @@ export const [Provider, useContext] = constate(() => {
       setLoginMsg("");
       setPageStatus("chatbot");
     } else {
-      setLoginMsg("认证失败");
+      setLoginMsg("认证失败，请重试");
     }
   }, []);
 
