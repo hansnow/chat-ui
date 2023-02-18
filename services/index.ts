@@ -31,7 +31,8 @@ export const getReply = async (question: string) => {
     },
   });
   if (resp.status !== 200) {
-    return location.reload();
+    return "发生错误，请重试";
+    // return location.reload();
   }
   const data = await resp.json();
   console.log("data", data);
