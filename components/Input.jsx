@@ -7,9 +7,9 @@ export default function Input({ onSend }) {
     setText(e.target.value);
   };
 
-  const handleSend = (e) => {
+  const handleSend = async (e) => {
     e.preventDefault();
-    const sendSuccess = onSend(text);
+    const sendSuccess = await onSend(text);
     if (sendSuccess !== false) {
       setText("");
     }
