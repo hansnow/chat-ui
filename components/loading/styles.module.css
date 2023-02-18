@@ -1,0 +1,10 @@
+.loading {
+  background: #fff;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  font-size: 30px;
+}

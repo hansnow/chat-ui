@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-
-import { Chatbot } from "../components";
+import { Main } from "@/components/main";
+import { Provider } from "./context";
 
 export default function Home() {
   return (
@@ -13,7 +13,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Chatbot />
+        <Provider>
+          <Main />
+        </Provider>
       </main>
     </>
   );
