@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/D',
+  basePath: '/chat',
   reactStrictMode: true,
 }
 
