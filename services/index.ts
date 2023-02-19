@@ -4,7 +4,7 @@ export const authTokenName = "auth-token";
 const apiServer = "http://43.156.82.111:8081";
 
 export const isTokenValid = async (username: string, password: string) => {
-  const { status } = await fetch(`${apiServer}/waj`, {
+  const resp = await fetch(`${apiServer}/waj`, {
     method: "POST",
     body: JSON.stringify({
       name: username,
@@ -14,7 +14,14 @@ export const isTokenValid = async (username: string, password: string) => {
       "Content-Type": "application/json",
     },
   });
-  return status === 200;
+  let errorMsg = "";
+  try {
+    errorMsg = (await resp.json()).error || "";
+  } catch (e) {}
+  return {
+    success: resp.status === 200,
+    errorMsg,
+  };
 };
 
 export const getReply = async (question: string) => {

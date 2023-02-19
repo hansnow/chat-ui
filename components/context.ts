@@ -21,7 +21,7 @@ export const [Provider, useContext] = constate(() => {
       if (!username || !password) {
         setPageStatus("login");
       } else {
-        const isValid = await isTokenValid(username, password);
+        const { success: isValid } = await isTokenValid(username, password);
         setPageStatus(isValid ? "chatbot" : "login");
       }
     };
@@ -32,14 +32,17 @@ export const [Provider, useContext] = constate(() => {
     if (!validateEmail(username)) {
       return setLoginMsg("请输入正确的邮箱地址");
     }
-    const isValid = await isTokenValid(username, password);
+    const { success: isValid, errorMsg } = await isTokenValid(
+      username,
+      password
+    );
     if (isValid) {
       localStorage.setItem(usernameName, username);
       localStorage.setItem(authTokenName, password);
       setLoginMsg("");
       setPageStatus("chatbot");
     } else {
-      setLoginMsg("认证失败，请重试");
+      setLoginMsg(errorMsg);
     }
   }, []);
 
