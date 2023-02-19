@@ -7,11 +7,12 @@ type LoginProps = {
 };
 
 export const Login = React.memo<LoginProps>(function Login(props) {
-  const { loginMsg } = useContext();
+  const { loginMsg, clearLoginMsg } = useContext();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const handleUsername = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
+    clearLoginMsg();
   };
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
@@ -24,12 +25,12 @@ export const Login = React.memo<LoginProps>(function Login(props) {
     <form onSubmit={handleLogin}>
       <div className="container">
         <label htmlFor="uname">
-          <b>用户名</b>
+          <b>邮箱</b>
         </label>
         <input
           className={styles.input}
           type="text"
-          placeholder="请输入用户名"
+          placeholder="请输入邮箱"
           name="uname"
           required
           value={username}

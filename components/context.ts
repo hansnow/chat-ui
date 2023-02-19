@@ -2,6 +2,12 @@ import { authTokenName, isTokenValid, usernameName } from "@/services";
 import constate from "constate";
 import { useCallback, useEffect, useState } from "react";
 
+// https://stackoverflow.com/a/9204568
+function validateEmail(email: string) {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
 export const [Provider, useContext] = constate(() => {
   const [loginMsg, setLoginMsg] = useState("");
   const [pageStatus, setPageStatus] = useState<"loading" | "login" | "chatbot">(
@@ -23,6 +29,9 @@ export const [Provider, useContext] = constate(() => {
   }, []);
 
   const auth = useCallback(async (username: string, password: string) => {
+    if (!validateEmail(username)) {
+      return setLoginMsg("请输入正确的邮箱地址");
+    }
     const isValid = await isTokenValid(username, password);
     if (isValid) {
       localStorage.setItem(usernameName, username);
@@ -40,10 +49,15 @@ export const [Provider, useContext] = constate(() => {
     location.reload();
   }, []);
 
+  const clearLoginMsg = useCallback(() => {
+    setLoginMsg("");
+  }, []);
+
   return {
     loginMsg,
     pageStatus,
     auth,
     quit,
+    clearLoginMsg,
   };
 });
