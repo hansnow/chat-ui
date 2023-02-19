@@ -35,6 +35,7 @@
 }
 
 .bot-message {
+  white-space: pre-wrap;
   text-align: left;
   float: left;
   padding: 15px 20px;
