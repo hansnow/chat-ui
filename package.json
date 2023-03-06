@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
+    "zip": "zip -r ui-$(cat package.json | jq -r '.version').zip out",
     "start": "next start",
     "lint": "next lint"
   },
