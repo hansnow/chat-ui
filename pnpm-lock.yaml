@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@microsoft/fetch-event-source': ^2.0.1
   '@next/font': 13.1.6
   '@types/node': 18.14.0
   '@types/react': 18.0.28
@@ -15,6 +16,7 @@ specifiers:
   typescript: 4.9.5
 
 dependencies:
+  '@microsoft/fetch-event-source': 2.0.1
   '@next/font': 13.1.6
   '@types/node': 18.14.0
   '@types/react': 18.0.28
@@ -72,6 +74,10 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: false
+
+  /@microsoft/fetch-event-source/2.0.1:
+    resolution: {integrity: sha512-W6CLUJ2eBMw3Rec70qrsEW0jOm/3twwJv21mrmj2yORiaVmVYGS4sSS5yUwvQc1ZlDLYGPnClVWmUUMagKNsfA==}
     dev: false
 
   /@next/env/13.1.6:

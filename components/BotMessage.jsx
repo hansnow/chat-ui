@@ -6,9 +6,11 @@ export default function BotMessage({ fetchMessage }) {
 
   useEffect(() => {
     async function loadMessage() {
-      const msg = await fetchMessage();
-      setLoading(false);
-      setMessage(msg);
+      await fetchMessage((msg) => {
+        setMessage(msg);
+        setLoading(false);
+      });
+      // setMessage(msg);
     }
     loadMessage();
   }, [fetchMessage]);
