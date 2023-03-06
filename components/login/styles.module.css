@@ -18,3 +18,10 @@
 .errorMsg {
   color: red;
 }
+.version {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  color: #fff;
+  font-size: 12px;
+}
