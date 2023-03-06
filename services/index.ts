@@ -1,7 +1,9 @@
 export const usernameName = "auth-name";
 export const authTokenName = "auth-token";
 
-const apiServer = "http://43.156.82.111:8081";
+// const apiServer = "http://43.156.82.111:8081";
+// 不依赖具体的服务器
+const apiServer = "";
 
 export const isTokenValid = async (username: string, password: string) => {
   const resp = await fetch(`${apiServer}/waj`, {
