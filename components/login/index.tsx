@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useContext } from "../context";
 import styles from "./styles.module.css";
+import pkg from "../../package.json";
 
 type LoginProps = {
   onLogin: (username: string, password: string) => void;
@@ -23,6 +24,7 @@ export const Login = React.memo<LoginProps>(function Login(props) {
   };
   return (
     <form onSubmit={handleLogin}>
+      <div className={styles.version}>{pkg.version}</div>
       <div className="container">
         <label htmlFor="uname">
           <b>邮箱</b>

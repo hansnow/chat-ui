@@ -1,10 +1,11 @@
 {
   "name": "chat-ui",
-  "version": "0.1.0",
+  "version": "1.0.3",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
+    "zip": "zip -r ui-$(cat package.json | jq -r '.version').zip out",
     "start": "next start",
     "lint": "next lint"
   },
