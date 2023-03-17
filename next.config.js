@@ -14,6 +14,11 @@ const nextConfig = {
         destination: 'http://localhost:8888/sse',
         basePath: false,
       },
+      {
+        source: '/wak_sse_get',
+        destination: 'http://localhost:8888/wak_sse_get',
+        basePath: false,
+      },
     ]
   },
 }
