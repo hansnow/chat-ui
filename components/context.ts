@@ -11,22 +11,23 @@ function validateEmail(email: string) {
 export const [Provider, useContext] = constate(() => {
   const [loginMsg, setLoginMsg] = useState("");
   const [pageStatus, setPageStatus] = useState<"loading" | "login" | "chatbot">(
-    "loading"
+    // "loading"
+    "chatbot"
   );
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      const username = localStorage.getItem(usernameName);
-      const password = localStorage.getItem(authTokenName);
-      if (!username || !password) {
-        setPageStatus("login");
-      } else {
-        const { success: isValid } = await isTokenValid(username, password);
-        setPageStatus(isValid ? "chatbot" : "login");
-      }
-    };
-    checkAuth();
-  }, []);
+  // useEffect(() => {
+  //   const checkAuth = async () => {
+  //     const username = localStorage.getItem(usernameName);
+  //     const password = localStorage.getItem(authTokenName);
+  //     if (!username || !password) {
+  //       setPageStatus("login");
+  //     } else {
+  //       const { success: isValid } = await isTokenValid(username, password);
+  //       setPageStatus(isValid ? "chatbot" : "login");
+  //     }
+  //   };
+  //   checkAuth();
+  // }, []);
 
   const auth = useCallback(async (username: string, password: string) => {
     if (!validateEmail(username)) {

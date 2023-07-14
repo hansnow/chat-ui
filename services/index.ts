@@ -3,7 +3,7 @@ export const authTokenName = "auth-token";
 
 // const apiServer = "http://43.156.82.111:8081";
 // 不依赖具体的服务器
-const apiServer = "";
+const apiServer = "http://localhost:5000";
 
 export const isTokenValid = async (username: string, password: string) => {
   const resp = await fetch(`${apiServer}/waj`, {
@@ -29,11 +29,11 @@ export const isTokenValid = async (username: string, password: string) => {
 export const getReply = async (question: string) => {
   const username = localStorage.getItem(usernameName);
   const password = localStorage.getItem(authTokenName);
-  const resp = await fetch(`${apiServer}/wak`, {
+  const resp = await fetch(`${apiServer}/chat`, {
     method: "POST",
     body: JSON.stringify({
-      user: { name: username, cert: password },
-      content: question,
+      // user: { name: username, cert: password },
+      question: question,
     }),
     headers: {
       "Content-Type": "application/json",
@@ -45,5 +45,5 @@ export const getReply = async (question: string) => {
   }
   const data = await resp.json();
   console.log("data", data);
-  return data.message;
+  return data.result;
 };

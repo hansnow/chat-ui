@@ -27,7 +27,7 @@ export function Chatbot() {
   useEffect(() => {
     async function loadWelcomeMessage() {
       setMessages([
-        <BotMessage key="0" fetchMessage={async () => "欢迎使用！"} />,
+        <BotMessage key="0" fetchMessage={async () => "来问我关于 Galacean 的问题吧，响应时间可能比较长，耐心等待一会儿"} />,
       ]);
     }
     loadWelcomeMessage();
