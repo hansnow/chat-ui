@@ -15,7 +15,10 @@ export default function BotMessage({ fetchMessage }) {
 
   return (
     <div className="message-container">
-      <div className="bot-message">{isLoading ? "..." : message}</div>
+      <div
+        className="bot-message"
+        dangerouslySetInnerHTML={{ __html: isLoading ? "..." : message }}
+      ></div>
     </div>
   );
 }

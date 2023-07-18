@@ -1,9 +1,10 @@
+import { remark } from "remark";
+import html from "remark-html";
+
 export const usernameName = "auth-name";
 export const authTokenName = "auth-token";
 
-// const apiServer = "http://43.156.82.111:8081";
-// 不依赖具体的服务器
-const apiServer = "http://localhost:5000";
+const apiServer = "http://30.30.224.68:5000";
 
 export const isTokenValid = async (username: string, password: string) => {
   const resp = await fetch(`${apiServer}/waj`, {
@@ -27,8 +28,6 @@ export const isTokenValid = async (username: string, password: string) => {
 };
 
 export const getReply = async (question: string) => {
-  const username = localStorage.getItem(usernameName);
-  const password = localStorage.getItem(authTokenName);
   const resp = await fetch(`${apiServer}/chat`, {
     method: "POST",
     body: JSON.stringify({
@@ -45,5 +44,8 @@ export const getReply = async (question: string) => {
   }
   const data = await resp.json();
   console.log("data", data);
-  return data.result;
+  // Use remark to convert markdown into HTML string
+  const processedContent = await remark().use(html).process(data.result);
+  const contentHtml = processedContent.toString();
+  return contentHtml;
 };
