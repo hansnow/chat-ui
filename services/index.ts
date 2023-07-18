@@ -1,5 +1,6 @@
 import { remark } from "remark";
 import html from "remark-html";
+import remarkExternalLinks from 'remark-external-links'
 
 export const usernameName = "auth-name";
 export const authTokenName = "auth-token";
@@ -45,7 +46,7 @@ export const getReply = async (question: string) => {
   const data = await resp.json();
   console.log("data", data);
   // Use remark to convert markdown into HTML string
-  const processedContent = await remark().use(html).process(data.result);
+  const processedContent = await remark().use(remarkExternalLinks, { target: "_blank" }).use(html).process(data.result);
   const contentHtml = processedContent.toString();
   return contentHtml;
 };
